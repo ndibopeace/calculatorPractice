@@ -1,1 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="./styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculator</title>
+    </head>
+    <body>
+        <h1>Calculator</h1>
+        <div id="container">
+            <div class="displayScreen">
+                <p id="solution"></p>
+                <input readonly type="text" id="math_area" value="" />
+            </div>
+            <div class="grid">
+                <button id="seven" class="number">7</button>
+                <button id="eight" class="number">8</button>
+                <button id="nine" class="number">9</button>
+
+                <button id="minus" class="number operator">-</button>
+
+                <button id="four" class="number">4</button>
+                <button id="five" class="number">5</button>
+                <button id="six" class="number">6</button>
+
+                <button id="divide" class="number operator">/</button>
+
+                <button id="one" class="number">1</button>
+                <button id="two" class="number">2</button>
+                <button id="three" class="number">3</button>
+
+                <button id="multiply" class="number operator">x</button>
+                <button id="zero" class="number">0</button>
+                <button id="dot" class="number">.</button>
+                <button id="pos_neg" class="number">+/_</button>
+
+                <button id="plus" class="number operator">+</button>
+                <button id="clear_memory" class="number span2 operator">
+                    CLR
+                </button>
+
+                <button id="show_solution" class="number span2 operator">
+                    =
+                </button>
+            </div>
+        </div>
+
+        <script src="./index.js"></script>
+    </body>
+</html>
+
+
 
