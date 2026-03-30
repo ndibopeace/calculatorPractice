@@ -1,5 +1,6 @@
 console.log("Hello World")
 
+const zeroEl = document.getElementById("zero")
 const oneEl  =document.getElementById("one");
 const twoEl  =document.getElementById("two");
 const threeEl  =document.getElementById("three");
@@ -21,7 +22,17 @@ const mathAreaEl  =document.getElementById("math_area");
 const solutionEl  =document.getElementById("solution");
 // const El  =document.getElementById("");
 
+isOperatorClicked = false;
+isNumClicked = false;
+
 let expression = "";
+let secondDisplay = "";
+
+zeroEl.addEventListener("click", function() {
+    number(0);
+    displayExpression()
+    console.log("zero")
+})
 
 oneEl.addEventListener("click", function() {
     number(1)
@@ -76,52 +87,79 @@ dotEl.addEventListener("click", function() {
 // math signs
 minusEl.addEventListener("click", function() {
     mathSign("-");
-    displayExpression()
+    // displayExpression()
 })
 
 plusEl.addEventListener("click", function() {
     mathSign("+");
-    displayExpression()
+    // displayExpression()
 })
 
 multiplyEl.addEventListener("click", function() {
     mathSign("*");
-    displayExpression()
+    // displayExpression()
 })
 
 divideEl.addEventListener("click", function() {
     mathSign("/");
-    displayExpression();
+    // displayExpression();
 })
 
-// posNegEl.addEventListener("click", function() {    
-// })
+posNegEl.addEventListener("click", function() {   
+    console.log("posNeg")
+})
 
 showSolutionEl.addEventListener("click", function() {
-    
+
+    secondDisplay += expression;
+    expression = ""
+    solutionEl.textContent = secondDisplay
+
+    let solution = Function(`
+        "use strict";
+        return ${secondDisplay}
+        `)();
+
+        mathAreaEl.value = solution
+        secondDisplay = solution.toString()  
 })
 
+
+
 clearMemoryEl.addEventListener("click", function() {
-    
+    expression = "";
+    secondDisplay = "";
+    mathAreaEl.value = 0;
+    solutionEl.textContent = secondDisplay;
 });
 
 // functions
 function number(digit) {
     expression += digit;
-    console.log(expression)
+    isNumClicked = true;
 }
 
 // operation adding function
-function mathSign (operator) {
-    expression += operator;
-    console.log(expression)
+function mathSign(operator) {
 
+    if (isNumClicked) {
+        expression += operator;
+        secondDisplay += expression;
+        solutionEl.textContent = secondDisplay
+        mathAreaEl.value = 0;
+        expression = ""        
+        isOperatorClicked = true;      
+    }
+
+    isNumClicked = false;
 }
 
 // display function
 function displayExpression() {
     mathAreaEl.value = expression    
 }
+
+// console.log(isOperatorClicked)
 
 
 
